@@ -1,13 +1,7 @@
-
-
 let canvas = document.getElementById('canvas');
 let ctx = canvas.getContext('2d'); 
 let ctxW = canvas.width;
 let ctxH = canvas.height;
-
-//get player id
-let playerX = document.getElementById('playerX');
-let playerY = document.getElementById('playerY');
 
 
 let witch = new Image();
@@ -49,6 +43,7 @@ let keys = {
 window.addEventListener('keydown', e => {
     if(keys[e.keyCode] !== 'undefined'){
         keys[e.keyCode] = true;
+        console.log('hello');
     };
 });
 
@@ -62,26 +57,25 @@ const drawMovedImage = (image, x, y) => {
     ctx.save();
     ctx.translate(x, y);
     ctx.drawImage(image, x, y);
+    ctx.restore();
 }
 
-// const step = () => {
-//     if(keys[key.Left]){witchX-=playerSpeed};
-//     if(keys[key.Right]){witchX+=playerSpeed};
+const step = () => {
+    if(keys[key.Left]){witchX += 3};
+    if(keys[key.Right]){witchX -= 3};
 
-//     playerX.innerHTML = Math.floor(witchX);
-
-// };
+};
 
 const draw = () => {
     ctx.clearRect( 0, 0, ctxW, ctxH);
-    // drawMovedImage(witch, witchX, witchY);
+    drawMovedImage(witch, witchX, witchY);
     ctx.drawImage(vampire,vampireX, vampireY);
     ctx.drawImage(werewolf, werewolfX, werewolfY);
 };
 
 const frame = () => {
     draw();
-    // step();
+    step();
     window.requestAnimationFrame(frame);
 };
 
