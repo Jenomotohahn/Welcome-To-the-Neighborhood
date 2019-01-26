@@ -1,5 +1,6 @@
 /*
   Manage the question disbursal & response
+const qMgt = require("./qMgt.js");
 
 */
 

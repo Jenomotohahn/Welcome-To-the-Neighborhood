@@ -1,5 +1,3 @@
-const qMgt = require("./qMgt.js");
-
 let canvas = document.getElementById("canvas");
 let ctx = canvas.getContext("2d");
 let ctxW = canvas.width;
