@@ -32,9 +32,17 @@ window.addEventListener('keydown', e => {
 window.addEventListener('keyup', e => {
     if(keys[e.keyCode] !== 'undefined'){
         keys[e.keyCode] = true;
-    }
+    };
 });
 
+const step = () => {
+
+};
+
+const draw = () => {
+    ctx.clearRect( 0, 0, ctxW, ctxH);
+    ctx.drawImage(image, 0,0);
+}
 
 const frame = () => {
     window.requestAnimationFrame(frame);
