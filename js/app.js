@@ -57,6 +57,7 @@ const draw = () => {
 
 };
 
+
 window.addEventListener('keydown', e => {
     if(keys[e.keyCode] !== 'undefined'){
         keys[e.keyCode] = true;
@@ -68,9 +69,20 @@ window.addEventListener('keyup', e => {
         keys[e.keyCode] = false;
     };
 });
+
+function collisionDetect(){
+    if(witchX < werewolfX){
+        console.log('hello')
+    }
+    if(witchX > vampireX){
+        console.log('hello')
+    }
+}
+
 const frame = () => {
   draw();
   step();
+  collisionDetect();
   window.requestAnimationFrame(frame);
 };
 
