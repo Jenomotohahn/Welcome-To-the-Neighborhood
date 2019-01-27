@@ -1,14 +1,37 @@
-h1{
-    text-align: center;
-};
+@import url('https://fonts.googleapis.com/css?family=VT323');
 
-body{
-    display:flex;
+h1 {
+    text-align: center;
+    font-weight: bold;
+    font-size: 53px;
+    font-family: 'VT323', monospace;
+    color: cornflowerblue;
+    text-transform: uppercase;
+    margin: 0px;
 }
 
-canvas{
-    margin:auto;
-    background-color:cornflowerblue;
+;
+
+body {
+    display: flex;
+    font-family: 'VT323', monospace;
+    background-color: #000;
+}
+
+canvas {
+    margin: auto;
+    background-color: cornflowerblue;
     display: block;
     border: 5px solid black;
-};
+}
+
+/* STYLING FOR UI + DIALOGUE DIVS-- change identifier as needed */
+
+#dialogue {
+    border: 3px solid white;
+    border-radius: 5px;
+    background-color: cornflowerblue;
+    color: #000;
+    font-family: 'VT323', monospace;
+
+}
