@@ -94,7 +94,7 @@ window.addEventListener('keyup', e => {
 function collisionDetect(){
     if(playerX === 570){
         console.log('hello vampire');
-        var audioVam = new Audio ('assets/vampire.mp3');
+        var audioVam = new Audio ('assets/vamp.mp3');
         audioVam.loop = false;
         audioVam.play();
     }
