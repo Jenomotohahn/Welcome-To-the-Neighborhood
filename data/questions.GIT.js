@@ -1,9 +1,12 @@
+"use strict";
+
 const arrQuestions_GIT = [
   {
-    category: 'GIT'
+    category: "GIT"
   },
   {
     question: "I need to create a new 'dev' branch",
+    name: "git1",
     type: "multiple choice",
     correctId: "d",
     arrChoices: [
@@ -27,9 +30,10 @@ const arrQuestions_GIT = [
   },
   {
     question: "What do I do to save my project on my laptop?",
+    name: "git2",
     type: "multiple choice",
     correctId: "a",
-    arrChoices = [
+    arrChoices: [
       {
         id: "a",
         answer: "git add .\n git commit -m"
@@ -45,22 +49,23 @@ const arrQuestions_GIT = [
       {
         id: "d",
         answer: "git save\n git commit -m"
-      },
-
+      }
     ]
   },
   {
     question: "How to I refresh my local repository?",
+    name: "git3",
     type: "multiple choice",
     correctId: "b",
-    arrChoices = [
+    arrChoices: [
       {
         id: "a",
         answer: "git push"
       },
       {
         id: "b",
-        answer: "git checkout master\ngit pull\ngit checkout dev\ngit merge master"
+        answer:
+          "git checkout master\ngit pull\ngit checkout dev\ngit merge master"
       },
       {
         id: "c",
@@ -69,13 +74,15 @@ const arrQuestions_GIT = [
       {
         id: "d",
         answer: "git init"
-      }]
+      }
+    ]
   },
   {
     question: "How to I bring my saved changes back up to github?",
+    name: "git4",
     type: "multiple choice",
     correctId: "a",
-    arrChoices = [
+    arrChoices: [
       {
         id: "a",
         answer: "git push"
@@ -91,13 +98,16 @@ const arrQuestions_GIT = [
       {
         id: "d",
         answer: "git init"
-      }]
+      }
+    ]
   },
   {
-    question: "I want to send my completed project to the main repository.  How do I do that?",
+    question:
+      "I want to send my completed project to the main repository.  How do I do that?",
+    name: "git5",
     type: "multiple choice",
     correctId: "d",
-    arrChoices = [
+    arrChoices: [
       {
         id: "a",
         answer: "Email it to git."
@@ -113,11 +123,11 @@ const arrQuestions_GIT = [
       {
         id: "d",
         answer: "Do a pull request."
-      }]
+      }
+    ]
   }
 ];
 
-
-module.exports = {
-  arrQuestions_GIT
-}
+// module.exports = {
+//   arrGIT: arrQuestions_GIT
+// };

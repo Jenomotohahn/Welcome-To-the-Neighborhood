@@ -1,9 +1,12 @@
+"use strict";
+
 const arrQuestions_Geography = [
   {
     category: "Geography"
   },
   {
     question: "Which is not a city in Turkey?",
+    name: "geo1",
     type: "multiple choice",
     correctId: "d",
     arrChoices: [
@@ -27,6 +30,7 @@ const arrQuestions_Geography = [
   },
   {
     question: "Canton is not a city of which location?",
+    name: "geo2",
     type: "multiple choice",
     correctId: "a",
     arrChoices: [
@@ -50,6 +54,7 @@ const arrQuestions_Geography = [
   },
   {
     question: "What is the capital of Hawaii?",
+    name: "geo3",
     type: "multiple choice",
     correctId: "c",
     arrChoices: [
@@ -73,6 +78,7 @@ const arrQuestions_Geography = [
   },
   {
     question: "Which is the capital of Oregon",
+    name: "geo4",
     type: "multiple choice",
     correctId: "b",
     arrChoices: [
@@ -96,6 +102,7 @@ const arrQuestions_Geography = [
   },
   {
     question: "What is the capital of New Jersey",
+    name: "geo5",
     type: "multiple choice",
     correctId: "b",
     arrChoices: [
@@ -119,6 +126,6 @@ const arrQuestions_Geography = [
   }
 ];
 
-module.exports = {
-  arrQuestions_Geography
-};
+// module.exports = {
+//   arrGeo: arrQuestions_Geography
+// };

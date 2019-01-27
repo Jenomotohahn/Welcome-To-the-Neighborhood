@@ -1,3 +1,5 @@
+const qs = questionServer;
+
 let canvas = document.getElementById("canvas");
 let ctx = canvas.getContext("2d");
 let ctxW = canvas.width;
@@ -17,13 +19,13 @@ player.src = "assets/img/player.png";
 
 let witchHouse = new Image();
 witchHouse.src = "assets/img/witchhouse.png";
-wHHeight = witchHouse.height * .6;
-wHWidth = witchHouse.width * .6;
+wHHeight = witchHouse.height * 0.6;
+wHWidth = witchHouse.width * 0.6;
 
 let werewolfHouse = new Image();
-werewolfHouse.src = "assets/img/werewolfhouse.png"
-wWHeight = werewolfHouse.height * .4;
-wWWidth = werewolfHouse.width * .4;
+werewolfHouse.src = "assets/img/werewolfhouse.png";
+wWHeight = werewolfHouse.height * 0.4;
+wWWidth = werewolfHouse.width * 0.4;
 
 let road = new Image();
 road.src = "assets/img/road.png";
@@ -61,6 +63,7 @@ const drawMovedImage = (image, x, y) => {
 };
 
 const step = () => {
+  
     if (keys[key.LEFT]) {
         playerX -= 3
     };
