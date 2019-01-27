@@ -17,8 +17,8 @@ player.src = "assets/img/player.png";
 
 let witchHouse = new Image();
 witchHouse.src = "assets/img/witchhouse.png";
-wHHeight = witchHouse.height * .5;
-wHWidth = witchHouse.width * .5;
+wHHeight = witchHouse.height * .6;
+wHWidth = witchHouse.width * .6;
 
 let werewolfHouse = new Image();
 werewolfHouse.src = "assets/img/werewolfhouse.png"
@@ -28,9 +28,9 @@ wWWidth = werewolfHouse.width * .4;
 let road = new Image();
 road.src = "assets/img/road.png";
 
-let witchX = 370;
+let witchX = 400;
 let witchY = 500;
-let vampireX = 500;
+let vampireX = 600;
 let vampireY = 500;
 let werewolfX = 200;
 let werewolfY = 500;
@@ -70,7 +70,7 @@ const step = () => {
 const draw = () => {
     ctx.clearRect( 0, 0, ctxW, ctxH);
     ctx.drawImage(road, 0 ,0);
-    ctx.drawImage(witchHouse, 105, 300, wHWidth, wHHeight);
+    ctx.drawImage(witchHouse, 90, 250, wHWidth, wHHeight);
     ctx.drawImage(werewolfHouse, -30, 360, wWWidth, wWHeight);
     ctx.drawImage(witch, witchX, witchY);
     ctx.drawImage(vampire,vampireX, vampireY);
@@ -78,7 +78,6 @@ const draw = () => {
     ctx.drawImage(player, playerX, playerY);
 
 };
-
 
 window.addEventListener('keydown', e => {
     if(keys[e.keyCode] !== 'undefined'){
@@ -113,3 +112,10 @@ const frame = () => {
 };
 
 frame();
+
+window.onload = function(){
+    if(!window.location.hash){
+        window.location = window.location + '#loaded';
+        window.location.reload();
+    };
+}
