@@ -1,6 +1,13 @@
 "use strict";
 const qPanel = document.getElementById("questionPanel");
 
+// const giveDevLeagueHomage = () => {
+//   const lblBlurb = document.createElement("div");
+//   lblBlurb.innerHTML = "DevLeague";
+//   lblBlurb.className = "overMoon";
+//   qPanel.appendChild(lblBlurb);
+// };
+
 /*
   Manage the question service & response
 */
@@ -41,6 +48,8 @@ const questionServer = (function() {
     const el = event.target;
     console.log(el);
     const sElementName = el.name;
+
+    document.querySelectorAll("label").forEach(x => (x.className = "active"));
     // disable question
     // disableControl(sElementName);
 
@@ -49,7 +58,7 @@ const questionServer = (function() {
     const chosenParm = "label[for='" + el.id + "']";
     const lblChosen = document.querySelector(chosenParm);
     lblChosen.className = "chosen";
-    // console.log(lblChosen);
+    console.log("lblChosen", lblChosen);
 
     // compare obj.answer to element.innerHTML
     const obj = arrQ
@@ -78,7 +87,7 @@ const questionServer = (function() {
 
       failMsg.innerHTML = obj.failMessage || "Wrong Answer";
       failMsg.className = "failMsg";
-      container.appendChild(failMsg);
+      el.appendChild(failMsg);
     }
   };
 
@@ -110,7 +119,7 @@ const questionServer = (function() {
       rdo.type = "radio";
       rdo.name = x.id;
       rdo.value = x.id;
-      rdo.id = x.id + "_" + x.id;
+      rdo.id = x.id;
       console.log(rdo.id);
       rdo.addEventListener("change", evalQ);
       spanChoice.appendChild(rdo);
@@ -120,7 +129,7 @@ const questionServer = (function() {
       // console.log(x.answer);
       // lbl.name = x.name;
       lbl.className = "active";
-      qPanel.appendChild(lbl);
+      // qPanel.appendChild(lbl);
       spanChoice.appendChild(lbl);
       divRadioButtons.appendChild(spanChoice);
     });
@@ -133,8 +142,8 @@ const questionServer = (function() {
     // const divQuestion = document.createElement("div");
     // divQuestion.id = "divQuestion";
     // load questionSet
-    let arrQ = [];
-
+    arrQ = [];
+    // giveDevLeagueHomage();
     let houseId = evt.target.id;
     console.log("houseId: ", houseId);
     houseId = "communityCenter";
