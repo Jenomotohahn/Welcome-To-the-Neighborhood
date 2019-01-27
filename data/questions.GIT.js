@@ -116,3 +116,8 @@ const arrQuestions_GIT = [
       }]
   }
 ];
+
+
+module.exports = {
+  arrQuestions_GIT
+}

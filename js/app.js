@@ -1,17 +1,16 @@
-let canvas = document.getElementById('canvas');
-let ctx = canvas.getContext('2d'); 
+let canvas = document.getElementById("canvas");
+let ctx = canvas.getContext("2d");
 let ctxW = canvas.width;
 let ctxH = canvas.height;
 
-
 let witch = new Image();
-witch.src = 'assets/witch.png';
+witch.src = "assets/witch.png";
 
 let vampire = new Image();
-vampire.src = 'assets/vampire.png';
+vampire.src = "assets/vampire.png";
 
 let werewolf = new Image();
-werewolf.src = 'assets/werewolf.png';
+werewolf.src = "assets/werewolf.png";
 
 let witchX = 370;
 let witchY = 400;
@@ -22,31 +21,26 @@ let werewolfY = 400;
 let playerXLoc = 270;
 let playerYLoc = 400;
 
-
-
 let key = {
-    UP: 38,
-    DOWN: 40,
-    LEFT: 37,
-    RIGHT: 39,
-
+  UP: 38,
+  DOWN: 40,
+  LEFT: 37,
+  RIGHT: 39
 };
 
 let keys = {
-    38: false,
-    40: false,
-    37: false,
-    39: false,
+  38: false,
+  40: false,
+  37: false,
+  39: false
 };
 
-
-
 const drawMovedImage = (image, x, y) => {
-    ctx.save();
-    ctx.translate(x, y);
-    ctx.drawImage(image, x, y);
-    ctx.restore();
-}
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.drawImage(image, x, y);
+  ctx.restore();
+};
 
 const step = () => {
     if(keys[key.LEFT]){witchX -= 3};
@@ -57,11 +51,10 @@ const step = () => {
 
 const draw = () => {
     ctx.clearRect( 0, 0, ctxW, ctxH);
-    if(keys[key.Left]){witchX += 3};
-    if(keys[key.Right]){witchX -= 3};
     ctx.drawImage(witch, witchX, witchY);
     ctx.drawImage(vampire,vampireX, vampireY);
     ctx.drawImage(werewolf, werewolfX, werewolfY);
+
 };
 
 window.addEventListener('keydown', e => {
@@ -76,9 +69,9 @@ window.addEventListener('keyup', e => {
     };
 });
 const frame = () => {
-    draw();
-    step();
-    window.requestAnimationFrame(frame);
+  draw();
+  step();
+  window.requestAnimationFrame(frame);
 };
 
 frame();

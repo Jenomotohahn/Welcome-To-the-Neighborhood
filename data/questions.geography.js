@@ -118,3 +118,7 @@ const arrQuestions_Geography = [
     ]
   }
 ];
+
+module.exports = {
+  arrQuestions_Geography
+};
