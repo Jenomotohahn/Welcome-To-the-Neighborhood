@@ -52,22 +52,22 @@ const arrQuestions_GIT = [
   {
     question: "How to I refresh my local repository?",
     type: "multiple choice",
-    correctId: "d",
+    correctId: "b",
     arrChoices = [
       {
         id: "a",
         answer: "git push"
       },
       {
-        id: "a",
-        answer: "git pull"
+        id: "b",
+        answer: "git checkout master\ngit pull\ngit checkout dev\ngit merge master"
       },
       {
-        id: "a",
+        id: "c",
         answer: "git refresh"
       },
       {
-        id: "a",
+        id: "d",
         answer: "git init"
       }]
   },
