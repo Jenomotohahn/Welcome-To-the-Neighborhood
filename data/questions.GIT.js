@@ -65,7 +65,7 @@ const arrQuestions_GIT = [
       {
         id: "b",
         answer:
-          "git checkout master\ngit pull\ngit checkout dev\ngit merge master"
+          "git checkout master<br>git pull<br>git checkout dev<br>git merge master"
       },
       {
         id: "c",

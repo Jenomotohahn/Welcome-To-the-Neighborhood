@@ -1,12 +1,12 @@
 "use strict";
 const qPanel = document.getElementById("questionPanel");
 
-const giveDevLeagueHomage = () => {
-  const lblBlurb = document.createElement("div");
-  lblBlurb.innerHTML = "DevLeague";
-  lblBlurb.className = "overMoon";
-  qPanel.appendChild(lblBlurb);
-};
+// const giveDevLeagueHomage = () => {
+//   const lblBlurb = document.createElement("div");
+//   lblBlurb.innerHTML = "DevLeague";
+//   lblBlurb.className = "overMoon";
+//   qPanel.appendChild(lblBlurb);
+// };
 
 /*
   Manage the question service & response
@@ -129,7 +129,7 @@ const questionServer = (function() {
       // console.log(x.answer);
       // lbl.name = x.name;
       lbl.className = "active";
-      qPanel.appendChild(lbl);
+      // qPanel.appendChild(lbl);
       spanChoice.appendChild(lbl);
       divRadioButtons.appendChild(spanChoice);
     });
@@ -143,7 +143,7 @@ const questionServer = (function() {
     // divQuestion.id = "divQuestion";
     // load questionSet
     arrQ = [];
-    giveDevLeagueHomage();
+    // giveDevLeagueHomage();
     let houseId = evt.target.id;
     console.log("houseId: ", houseId);
     houseId = "communityCenter";
