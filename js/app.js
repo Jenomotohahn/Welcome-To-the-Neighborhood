@@ -6,22 +6,38 @@ let ctxW = canvas.width;
 let ctxH = canvas.height;
 
 let witch = new Image();
-witch.src = "assets/witch.png";
+witch.src = "assets/img/witch.png";
 
 let vampire = new Image();
-vampire.src = "assets/vampire.png";
+vampire.src = "assets/img/vampire.png";
 
 let werewolf = new Image();
-werewolf.src = "assets/werewolf.png";
+werewolf.src = "assets/img/werewolf.png";
 
-let witchX = 370;
-let witchY = 400;
-let vampireX = 500;
-let vampireY = 400;
+let player = new Image();
+player.src = "assets/img/player.png";
+
+let witchHouse = new Image();
+witchHouse.src = "assets/img/witchhouse.png";
+wHHeight = witchHouse.height * .6;
+wHWidth = witchHouse.width * .6;
+
+let werewolfHouse = new Image();
+werewolfHouse.src = "assets/img/werewolfhouse.png"
+wWHeight = werewolfHouse.height * .4;
+wWWidth = werewolfHouse.width * .4;
+
+let road = new Image();
+road.src = "assets/img/road.png";
+
+let witchX = 400;
+let witchY = 500;
+let vampireX = 600;
+let vampireY = 500;
 let werewolfX = 200;
-let werewolfY = 400;
-let playerXLoc = 270;
-let playerYLoc = 400;
+let werewolfY = 500;
+let playerX = 900;
+let playerY = 500;
 
 let key = {
   UP: 38,
@@ -45,21 +61,24 @@ const drawMovedImage = (image, x, y) => {
 };
 
 const step = () => {
-  if (keys[key.LEFT]) {
-    witchX -= 3;
-  }
-  if (keys[key.RIGHT]) {
-    witchX += 3;
-  }
-  // if(keys[key.UP]){witchY -= 3};
-  // if(keys[key.DOWN]){witchY += 3};
+
+    if(keys[key.LEFT]){playerX -= 3};
+    if(keys[key.RIGHT]){playerX += 3};
+    // if(keys[key.UP]){
+    //     //some code to check if the player is interacting with a neighbor.If yes:
+    //     //text box to come up and with selectable multiple choice. 
+    // };
 };
 
 const draw = () => {
-  ctx.clearRect(0, 0, ctxW, ctxH);
-  ctx.drawImage(witch, witchX, witchY);
-  ctx.drawImage(vampire, vampireX, vampireY);
-  ctx.drawImage(werewolf, werewolfX, werewolfY);
+    ctx.clearRect( 0, 0, ctxW, ctxH);
+    ctx.drawImage(road, 0 ,0);
+    ctx.drawImage(witchHouse, 90, 250, wHWidth, wHHeight);
+    ctx.drawImage(werewolfHouse, -30, 360, wWWidth, wWHeight);
+    ctx.drawImage(witch, witchX, witchY);
+    ctx.drawImage(vampire,vampireX, vampireY);
+    ctx.drawImage(werewolf, werewolfX, werewolfY);
+    ctx.drawImage(player, playerX, playerY);
 };
 
 window.addEventListener("keydown", e => {
@@ -74,15 +93,46 @@ window.addEventListener("keyup", e => {
   }
 });
 
+
 document.getElementById("test").addEventListener("click", e => {
   alert("test");
   qs.loadQuestion(e);
 });
 
+function collisionDetect(){
+    if(playerX === 570){
+        console.log('hello vampire');
+        var audioVam = new Audio ('assets/vamp.mp3');
+        audioVam.loop = false;
+        audioVam.play();
+    }
+    if(playerX === 360){
+        console.log('hello witch')
+        var audioWitch = new Audio('assets/witch laugh.mp3');
+        audioWitch.loop = false;
+        audioWitch.play();
+    }
+    if(playerX === 180){
+        console.log('hello werewolf')
+        var audioWolf = new Audio('assets/werewolfsound.mp3');
+        audioWolf.loop = false;
+        audioWolf.play();
+    }
+    
+}
+
 const frame = () => {
   draw();
   step();
+  collisionDetect();
   window.requestAnimationFrame(frame);
 };
 
 frame();
+
+window.onload = function(){
+    if(!window.location.hash){
+        window.location = window.location + '#loaded';
+        window.location.reload();
+    };
+}
