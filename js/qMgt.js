@@ -91,11 +91,16 @@ const questionServer = (function() {
     }
   };
 
-  // Create radio buttons for one question
-  const createRadioButtonControl = obj => {
+  // Remove question
+  const removeQuestion = () => {
     qPanel.childNodes.forEach(x =>
       x.parentNode.removeChild(x.parentNode.firstChild)
     );
+  };
+
+  // Create radio buttons for one question
+  const createRadioButtonControl = obj => {
+    removeQuestion();
     // console.log("createRadioButtonControl: ", obj);
     const divQuestion = document.createElement("div"); // this element holds everything
     divQuestion.className = "divQuestion active";
@@ -144,7 +149,8 @@ const questionServer = (function() {
     // load questionSet
     arrQ = [];
     // giveDevLeagueHomage();
-    let houseId = evt.target.id;
+    let houseId;
+    // let houseId = evt.target.id;
     console.log("houseId: ", houseId);
     houseId = "communityCenter";
     switch (houseId) {
@@ -172,7 +178,8 @@ const questionServer = (function() {
   };
 
   return {
-    loadQuestion: loadQ
+    loadQuestion: loadQ,
+    removeQuestion: removeQuestion
   };
 })();
 
