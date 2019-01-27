@@ -92,14 +92,23 @@ window.addEventListener('keyup', e => {
 });
 
 function collisionDetect(){
-    if(playerX === 495){
-        alert('hello vampire')
+    if(playerX === 570){
+        console.log('hello vampire');
+        var audioVam = new Audio ('assets/vamp.mp3');
+        audioVam.loop = false;
+        audioVam.play();
     }
     if(playerX === 360){
-        alert('hello witch')
+        console.log('hello witch')
+        var audioWitch = new Audio('assets/witch laugh.mp3');
+        audioWitch.loop = false;
+        audioWitch.play();
     }
     if(playerX === 180){
-        alert('hello werewolf')
+        console.log('hello werewolf')
+        var audioWolf = new Audio('assets/werewolfsound.mp3');
+        audioWolf.loop = false;
+        audioWolf.play();
     }
     
 }
