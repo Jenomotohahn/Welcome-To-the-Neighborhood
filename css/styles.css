@@ -1,14 +1,18 @@
-h1{
-    text-align: center;
-};
-
-body{
-    display:flex;
+h1 {
+  text-align: center;
 }
 
-canvas{
-    margin:auto;
-    background-color:cornflowerblue;
-    display: block;
-    border: 5px solid black;
-};
+body {
+  display: flex;
+}
+
+canvas {
+  margin: auto;
+  background-color: cornflowerblue;
+  display: block;
+  border: 5px solid black;
+}
+
+#questionsPanel {
+  border: 2px solid blue;
+}

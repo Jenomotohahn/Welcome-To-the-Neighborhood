@@ -1,3 +1,5 @@
+const qs = questionServer;
+
 let canvas = document.getElementById("canvas");
 let ctx = canvas.getContext("2d");
 let ctxW = canvas.width;
@@ -43,31 +45,40 @@ const drawMovedImage = (image, x, y) => {
 };
 
 const step = () => {
-    if(keys[key.LEFT]){witchX -= 3};
-    if(keys[key.RIGHT]){witchX += 3};
-    // if(keys[key.UP]){witchY -= 3};
-    // if(keys[key.DOWN]){witchY += 3};
+  if (keys[key.LEFT]) {
+    witchX -= 3;
+  }
+  if (keys[key.RIGHT]) {
+    witchX += 3;
+  }
+  // if(keys[key.UP]){witchY -= 3};
+  // if(keys[key.DOWN]){witchY += 3};
 };
 
 const draw = () => {
-    ctx.clearRect( 0, 0, ctxW, ctxH);
-    ctx.drawImage(witch, witchX, witchY);
-    ctx.drawImage(vampire,vampireX, vampireY);
-    ctx.drawImage(werewolf, werewolfX, werewolfY);
-
+  ctx.clearRect(0, 0, ctxW, ctxH);
+  ctx.drawImage(witch, witchX, witchY);
+  ctx.drawImage(vampire, vampireX, vampireY);
+  ctx.drawImage(werewolf, werewolfX, werewolfY);
 };
 
-window.addEventListener('keydown', e => {
-    if(keys[e.keyCode] !== 'undefined'){
-        keys[e.keyCode] = true;
-    };
+window.addEventListener("keydown", e => {
+  if (keys[e.keyCode] !== "undefined") {
+    keys[e.keyCode] = true;
+  }
 });
 
-window.addEventListener('keyup', e => {
-    if(keys[e.keyCode] !== 'undefined'){
-        keys[e.keyCode] = false;
-    };
+window.addEventListener("keyup", e => {
+  if (keys[e.keyCode] !== "undefined") {
+    keys[e.keyCode] = false;
+  }
 });
+
+document.getElementById("test").addEventListener("click", e => {
+  alert("test");
+  qs.loadQuestion(e);
+});
+
 const frame = () => {
   draw();
   step();
