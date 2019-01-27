@@ -90,9 +90,24 @@ window.addEventListener('keyup', e => {
         keys[e.keyCode] = false;
     };
 });
+
+function collisionDetect(){
+    if(playerX === 495){
+        alert('hello vampire')
+    }
+    if(playerX === 360){
+        alert('hello witch')
+    }
+    if(playerX === 180){
+        alert('hello werewolf')
+    }
+    
+}
+
 const frame = () => {
   draw();
   step();
+  collisionDetect();
   window.requestAnimationFrame(frame);
 };
 
