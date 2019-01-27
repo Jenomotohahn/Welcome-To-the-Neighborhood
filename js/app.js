@@ -1,3 +1,5 @@
+const qs = questionServer;
+
 let canvas = document.getElementById("canvas");
 let ctx = canvas.getContext("2d");
 let ctxW = canvas.width;
@@ -59,6 +61,7 @@ const drawMovedImage = (image, x, y) => {
 };
 
 const step = () => {
+
     if(keys[key.LEFT]){playerX -= 3};
     if(keys[key.RIGHT]){playerX += 3};
     // if(keys[key.UP]){
@@ -76,19 +79,24 @@ const draw = () => {
     ctx.drawImage(vampire,vampireX, vampireY);
     ctx.drawImage(werewolf, werewolfX, werewolfY);
     ctx.drawImage(player, playerX, playerY);
-
 };
 
-window.addEventListener('keydown', e => {
-    if(keys[e.keyCode] !== 'undefined'){
-        keys[e.keyCode] = true;
-    };
+window.addEventListener("keydown", e => {
+  if (keys[e.keyCode] !== "undefined") {
+    keys[e.keyCode] = true;
+  }
 });
 
-window.addEventListener('keyup', e => {
-    if(keys[e.keyCode] !== 'undefined'){
-        keys[e.keyCode] = false;
-    };
+window.addEventListener("keyup", e => {
+  if (keys[e.keyCode] !== "undefined") {
+    keys[e.keyCode] = false;
+  }
+});
+
+
+document.getElementById("test").addEventListener("click", e => {
+  alert("test");
+  qs.loadQuestion(e);
 });
 
 function collisionDetect(){
