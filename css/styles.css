@@ -33,5 +33,9 @@ canvas {
     background-color: cornflowerblue;
     color: #000;
     font-family: 'VT323', monospace;
+};
 
+#box{
+    display:flex;
+    border:black;
 }
