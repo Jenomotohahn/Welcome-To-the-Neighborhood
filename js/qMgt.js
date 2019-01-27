@@ -1,5 +1,4 @@
 "use strict";
-const q = document.getElementById("questionsPanel");
 const panel = document.getElementById("questionsPanel");
 
 /*
@@ -82,6 +81,9 @@ const questionServer = (function() {
 
   // Create radio buttons for one question
   const createRadioButtonControl = obj => {
+    panel.childNodes.forEach(x =>
+      x.parentNode.removeChild(x.parentNode.firstChild)
+    );
     console.log("createRadioButtonControl: ", obj);
     const divQuestion = document.createElement("div"); // this element holds everything
     divQuestion.className = "divQuestion active";
@@ -105,7 +107,7 @@ const questionServer = (function() {
       rdo.value = x.id;
       rdo.id = x.id + "_" + x.id;
       console.log(rdo.id);
-      //rdo.addEventListener("change", evalQ);
+      rdo.addEventListener("change", evalQ);
       divRadioButtons.appendChild(rdo);
       const lbl = document.createElement("label");
       lbl.setAttribute("for", lbl.id);
@@ -113,7 +115,7 @@ const questionServer = (function() {
       console.log(x.answer);
       // lbl.name = x.name;
       lbl.className = "active";
-      q.appendChild(lbl);
+      panel.appendChild(lbl);
 
       divRadioButtons.appendChild(lbl);
     });
