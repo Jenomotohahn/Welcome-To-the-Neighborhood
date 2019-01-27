@@ -20,7 +20,6 @@ let werewolfX = 200;
 let werewolfY = 400;
 let playerXLoc = 270;
 let playerYLoc = 400;
-let playerSpeed = 2;
 
 let key = {
   UP: 38,
@@ -36,19 +35,6 @@ let keys = {
   39: false
 };
 
-window.addEventListener("keydown", e => {
-  if (keys[e.keyCode] !== "undefined") {
-    keys[e.keyCode] = true;
-    console.log("hello");
-  }
-});
-
-window.addEventListener("keyup", e => {
-  if (keys[e.keyCode] !== "undefined") {
-    keys[e.keyCode] = true;
-  }
-});
-
 const drawMovedImage = (image, x, y) => {
   ctx.save();
   ctx.translate(x, y);
@@ -57,21 +43,31 @@ const drawMovedImage = (image, x, y) => {
 };
 
 const step = () => {
-  if (keys[key.Left]) {
-    witchX += 3;
-  }
-  if (keys[key.Right]) {
-    witchX -= 3;
-  }
+    if(keys[key.LEFT]){witchX -= 3};
+    if(keys[key.RIGHT]){witchX += 3};
+    // if(keys[key.UP]){witchY -= 3};
+    // if(keys[key.DOWN]){witchY += 3};
 };
 
 const draw = () => {
-  ctx.clearRect(0, 0, ctxW, ctxH);
-  drawMovedImage(witch, witchX, witchY);
-  ctx.drawImage(vampire, vampireX, vampireY);
-  ctx.drawImage(werewolf, werewolfX, werewolfY);
+    ctx.clearRect( 0, 0, ctxW, ctxH);
+    ctx.drawImage(witch, witchX, witchY);
+    ctx.drawImage(vampire,vampireX, vampireY);
+    ctx.drawImage(werewolf, werewolfX, werewolfY);
+
 };
 
+window.addEventListener('keydown', e => {
+    if(keys[e.keyCode] !== 'undefined'){
+        keys[e.keyCode] = true;
+    };
+});
+
+window.addEventListener('keyup', e => {
+    if(keys[e.keyCode] !== 'undefined'){
+        keys[e.keyCode] = false;
+    };
+});
 const frame = () => {
   draw();
   step();
