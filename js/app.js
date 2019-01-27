@@ -19,13 +19,13 @@ player.src = "assets/img/player.png";
 
 let witchHouse = new Image();
 witchHouse.src = "assets/img/witchhouse.png";
-wHHeight = witchHouse.height * .6;
-wHWidth = witchHouse.width * .6;
+wHHeight = witchHouse.height * 0.6;
+wHWidth = witchHouse.width * 0.6;
 
 let werewolfHouse = new Image();
-werewolfHouse.src = "assets/img/werewolfhouse.png"
-wWHeight = werewolfHouse.height * .4;
-wWWidth = werewolfHouse.width * .4;
+werewolfHouse.src = "assets/img/werewolfhouse.png";
+wWHeight = werewolfHouse.height * 0.4;
+wWWidth = werewolfHouse.width * 0.4;
 
 let road = new Image();
 road.src = "assets/img/road.png";
@@ -61,24 +61,27 @@ const drawMovedImage = (image, x, y) => {
 };
 
 const step = () => {
-
-    if(keys[key.LEFT]){playerX -= 3};
-    if(keys[key.RIGHT]){playerX += 3};
-    // if(keys[key.UP]){
-    //     //some code to check if the player is interacting with a neighbor.If yes:
-    //     //text box to come up and with selectable multiple choice. 
-    // };
+  if (keys[key.LEFT]) {
+    playerX -= 3;
+  }
+  if (keys[key.RIGHT]) {
+    playerX += 3;
+  }
+  // if(keys[key.UP]){
+  //     //some code to check if the player is interacting with a neighbor.If yes:
+  //     //text box to come up and with selectable multiple choice.
+  // };
 };
 
 const draw = () => {
-    ctx.clearRect( 0, 0, ctxW, ctxH);
-    ctx.drawImage(road, 0 ,0);
-    ctx.drawImage(witchHouse, 90, 250, wHWidth, wHHeight);
-    ctx.drawImage(werewolfHouse, -30, 360, wWWidth, wWHeight);
-    ctx.drawImage(witch, witchX, witchY);
-    ctx.drawImage(vampire,vampireX, vampireY);
-    ctx.drawImage(werewolf, werewolfX, werewolfY);
-    ctx.drawImage(player, playerX, playerY);
+  ctx.clearRect(0, 0, ctxW, ctxH);
+  ctx.drawImage(road, 0, 0);
+  ctx.drawImage(witchHouse, 90, 250, wHWidth, wHHeight);
+  ctx.drawImage(werewolfHouse, -30, 360, wWWidth, wWHeight);
+  ctx.drawImage(witch, witchX, witchY);
+  ctx.drawImage(vampire, vampireX, vampireY);
+  ctx.drawImage(werewolf, werewolfX, werewolfY);
+  ctx.drawImage(player, playerX, playerY);
 };
 
 window.addEventListener("keydown", e => {
@@ -93,32 +96,29 @@ window.addEventListener("keyup", e => {
   }
 });
 
-
 document.getElementById("test").addEventListener("click", e => {
-  alert("test");
   qs.loadQuestion(e);
 });
 
-function collisionDetect(){
-    if(playerX === 570){
-        console.log('hello vampire');
-        var audioVam = new Audio ('assets/vamp.mp3');
-        audioVam.loop = false;
-        audioVam.play();
-    }
-    if(playerX === 360){
-        console.log('hello witch')
-        var audioWitch = new Audio('assets/witch laugh.mp3');
-        audioWitch.loop = false;
-        audioWitch.play();
-    }
-    if(playerX === 180){
-        console.log('hello werewolf')
-        var audioWolf = new Audio('assets/werewolfsound.mp3');
-        audioWolf.loop = false;
-        audioWolf.play();
-    }
-    
+function collisionDetect() {
+  if (playerX === 570) {
+    console.log("hello vampire");
+    var audioVam = new Audio("assets/vamp.mp3");
+    audioVam.loop = false;
+    audioVam.play();
+  }
+  if (playerX === 360) {
+    console.log("hello witch");
+    var audioWitch = new Audio("assets/witch laugh.mp3");
+    audioWitch.loop = false;
+    audioWitch.play();
+  }
+  if (playerX === 180) {
+    console.log("hello werewolf");
+    var audioWolf = new Audio("assets/werewolfsound.mp3");
+    audioWolf.loop = false;
+    audioWolf.play();
+  }
 }
 
 const frame = () => {
@@ -130,9 +130,9 @@ const frame = () => {
 
 frame();
 
-window.onload = function(){
-    if(!window.location.hash){
-        window.location = window.location + '#loaded';
-        window.location.reload();
-    };
-}
+window.onload = function() {
+  if (!window.location.hash) {
+    window.location = window.location + "#loaded";
+    window.location.reload();
+  }
+};
