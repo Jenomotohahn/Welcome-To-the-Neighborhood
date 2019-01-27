@@ -2,8 +2,13 @@ h1{
     text-align: center;
 };
 
+body{
+    display:flex;
+}
+
 canvas{
-    background-color: cornflowerblue;
+    margin:auto;
+    background-color:cornflowerblue;
     display: block;
     border: 5px solid black;
 };
