@@ -35,9 +35,31 @@ canvas {
 
 #box {
   display: flex;
+  flex-flow: column nowrap;
   border: black;
 }
-
-#questionsPanel {
+.divQuestion {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+}
+#questionPanel {
+  color: white;
+  /* background-color: cornflowerblue; */
   border: 2px solid blue;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+#pQuestionText {
+  align-self: center;
+  font-size: 26px;
+}
+#divRadioButtons {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.choices {
+  margin-left: 33%;
 }

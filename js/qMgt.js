@@ -1,9 +1,10 @@
 "use strict";
-const panel = document.getElementById("questionsPanel");
+const qPanel = document.getElementById("questionPanel");
 
 /*
   Manage the question service & response
 */
+let arrQ = [];
 const arrGeo = arrQuestions_Geography;
 const arrGIT = arrQuestions_GIT;
 const questionServer = (function() {
@@ -38,18 +39,20 @@ const questionServer = (function() {
   const evalQ = event => {
     // get the name of the object
     const el = event.target;
+    console.log(el);
     const sElementName = el.name;
     // disable question
     // disableControl(sElementName);
 
     // highlight chosen radio label
+    console.log(el.id);
     const chosenParm = "label[for='" + el.id + "']";
     const lblChosen = document.querySelector(chosenParm);
     lblChosen.className = "chosen";
-    console.log(lblChosen);
+    // console.log(lblChosen);
 
     // compare obj.answer to element.innerHTML
-    const obj = arrQuestions
+    const obj = arrQ
       .filter(x => {
         if (x.name == sElementName) {
           return true;
@@ -62,7 +65,7 @@ const questionServer = (function() {
       // go to next question
       // get order # and see if there's a higher one
       const iOrder = obj.order;
-      const arrObjNext = arrQuestions
+      const arrObjNext = arrQ
         .filter(x => {
           if (x.order > iOrder) {
             return true;
@@ -81,10 +84,10 @@ const questionServer = (function() {
 
   // Create radio buttons for one question
   const createRadioButtonControl = obj => {
-    panel.childNodes.forEach(x =>
+    qPanel.childNodes.forEach(x =>
       x.parentNode.removeChild(x.parentNode.firstChild)
     );
-    console.log("createRadioButtonControl: ", obj);
+    // console.log("createRadioButtonControl: ", obj);
     const divQuestion = document.createElement("div"); // this element holds everything
     divQuestion.className = "divQuestion active";
     divQuestion.name = obj.name;
@@ -97,10 +100,12 @@ const questionServer = (function() {
     // console.log(divQuestion);
     const divRadioButtons = document.createElement("div");
     divRadioButtons.id = "divRadioButtons";
-    console.log(obj.arrChoices);
+    // console.log(obj.arrChoices);
     obj.arrChoices.forEach(x => {
       // add a radio button and label
-      console.log(x);
+      // console.log(x);
+      const spanChoice = document.createElement("span");
+      spanChoice.className = "choices";
       const rdo = document.createElement("input");
       rdo.type = "radio";
       rdo.name = x.id;
@@ -108,16 +113,16 @@ const questionServer = (function() {
       rdo.id = x.id + "_" + x.id;
       console.log(rdo.id);
       rdo.addEventListener("change", evalQ);
-      divRadioButtons.appendChild(rdo);
+      spanChoice.appendChild(rdo);
       const lbl = document.createElement("label");
-      lbl.setAttribute("for", lbl.id);
+      lbl.setAttribute("for", rdo.id);
       lbl.innerHTML = x.answer;
-      console.log(x.answer);
+      // console.log(x.answer);
       // lbl.name = x.name;
       lbl.className = "active";
-      panel.appendChild(lbl);
-
-      divRadioButtons.appendChild(lbl);
+      qPanel.appendChild(lbl);
+      spanChoice.appendChild(lbl);
+      divRadioButtons.appendChild(spanChoice);
     });
 
     divQuestion.appendChild(divRadioButtons);
@@ -132,7 +137,7 @@ const questionServer = (function() {
 
     let houseId = evt.target.id;
     console.log("houseId: ", houseId);
-    houseId = "witchHouse";
+    houseId = "communityCenter";
     switch (houseId) {
       case "witchHouse":
         arrQ = arrGeo;
@@ -144,7 +149,7 @@ const questionServer = (function() {
         arrQ = arrGeo;
         break;
       case "communityCenter":
-        arrQ = arrGeo.merge(arrGit);
+        arrQ = arrGeo.concat(arrGIT);
         break;
     }
     // randomize the questions and the answers
@@ -154,7 +159,7 @@ const questionServer = (function() {
     console.log(objQ);
     const divQuestion = createRadioButtonControl(objQ);
 
-    panel.appendChild(divQuestion);
+    qPanel.appendChild(divQuestion);
   };
 
   return {
