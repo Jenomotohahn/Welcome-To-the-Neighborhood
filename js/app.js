@@ -40,99 +40,106 @@ let playerX = 900;
 let playerY = 500;
 
 let key = {
-  UP: 38,
-  DOWN: 40,
-  LEFT: 37,
-  RIGHT: 39
+    UP: 38,
+    DOWN: 40,
+    LEFT: 37,
+    RIGHT: 39,
+    SPACE: 32
 };
 
 let keys = {
-  38: false,
-  40: false,
-  37: false,
-  39: false
+    38: false,
+    40: false,
+    37: false,
+    39: false,
+    32: false
 };
 
 const drawMovedImage = (image, x, y) => {
-  ctx.save();
-  ctx.translate(x, y);
-  ctx.drawImage(image, x, y);
-  ctx.restore();
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.drawImage(image, x, y);
+    ctx.restore();
 };
 
 const step = () => {
-  if (keys[key.LEFT]) {
-    playerX -= 3;
-  }
-  if (keys[key.RIGHT]) {
-    playerX += 3;
-  }
-  // if(keys[key.UP]){
-  //     //some code to check if the player is interacting with a neighbor.If yes:
-  //     //text box to come up and with selectable multiple choice.
-  // };
+  
+    if (keys[key.LEFT]) {
+        playerX -= 3
+    };
+    if (keys[key.RIGHT]) {
+        playerX += 3
+    };
+    if (keys[key.SPACE]) {
+        playerY -= 3
+    };
+    if (keys[key.DOWN]) {
+        playerY += 3
+    }
+    // if(keys[key.UP]){
+    //     //some code to check if the player is interacting with a neighbor.If yes:
+    //     //text box to come up and with selectable multiple choice. 
+    // };
 };
 
 const draw = () => {
-  ctx.clearRect(0, 0, ctxW, ctxH);
-  ctx.drawImage(road, 0, 0);
-  ctx.drawImage(witchHouse, 90, 250, wHWidth, wHHeight);
-  ctx.drawImage(werewolfHouse, -30, 360, wWWidth, wWHeight);
-  ctx.drawImage(witch, witchX, witchY);
-  ctx.drawImage(vampire, vampireX, vampireY);
-  ctx.drawImage(werewolf, werewolfX, werewolfY);
-  ctx.drawImage(player, playerX, playerY);
+    ctx.clearRect(0, 0, ctxW, ctxH);
+    ctx.drawImage(road, 0, 0);
+    ctx.drawImage(witchHouse, 90, 250, wHWidth, wHHeight);
+    ctx.drawImage(werewolfHouse, -30, 360, wWWidth, wWHeight);
+    ctx.drawImage(witch, witchX, witchY);
+    ctx.drawImage(vampire, vampireX, vampireY);
+    ctx.drawImage(werewolf, werewolfX, werewolfY);
+    ctx.drawImage(player, playerX, playerY);
+
 };
 
-window.addEventListener("keydown", e => {
-  if (keys[e.keyCode] !== "undefined") {
-    keys[e.keyCode] = true;
-  }
+window.addEventListener('keydown', e => {
+    if (keys[e.keyCode] !== 'undefined') {
+        keys[e.keyCode] = true;
+    };
 });
 
-window.addEventListener("keyup", e => {
-  if (keys[e.keyCode] !== "undefined") {
-    keys[e.keyCode] = false;
-  }
-});
-
-document.getElementById("test").addEventListener("click", e => {
-  qs.loadQuestion(e);
+window.addEventListener('keyup', e => {
+    if (keys[e.keyCode] !== 'undefined') {
+        keys[e.keyCode] = false;
+    };
 });
 
 function collisionDetect() {
-  if (playerX === 570) {
-    console.log("hello vampire");
-    var audioVam = new Audio("assets/vamp.mp3");
-    audioVam.loop = false;
-    audioVam.play();
-  }
-  if (playerX === 360) {
-    console.log("hello witch");
-    var audioWitch = new Audio("assets/witch laugh.mp3");
-    audioWitch.loop = false;
-    audioWitch.play();
-  }
-  if (playerX === 180) {
-    console.log("hello werewolf");
-    var audioWolf = new Audio("assets/werewolfsound.mp3");
-    audioWolf.loop = false;
-    audioWolf.play();
-  }
+    if (playerX === 570) {
+        console.log('hello vampire');
+        var audioVam = new Audio('assets/vamp.mp3');
+        audioVam.loop = false;
+        audioVam.play();
+    }
+    if (playerX === 360) {
+        console.log('hello witch')
+        var audioWitch = new Audio('assets/witch laugh.mp3');
+        audioWitch.loop = false;
+        audioWitch.play();
+    }
+    if (playerX === 180) {
+        console.log('hello werewolf')
+        var audioWolf = new Audio('assets/werewolfsound.mp3');
+        audioWolf.loop = false;
+        audioWolf.play();
+    }
+
 }
 
 const frame = () => {
-  draw();
-  step();
-  collisionDetect();
-  window.requestAnimationFrame(frame);
+    draw();
+    step();
+    collisionDetect();
+    window.requestAnimationFrame(frame);
 };
 
 frame();
 
-window.onload = function() {
-  if (!window.location.hash) {
-    window.location = window.location + "#loaded";
-    window.location.reload();
-  }
-};
+window.onload = function () {
+    if (!window.location.hash) {
+        window.location = window.location + '#loaded';
+        window.location.reload();
+    };
+}
