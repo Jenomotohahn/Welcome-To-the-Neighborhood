@@ -12,3 +12,8 @@ canvas{
     display: block;
     border: 5px solid black;
 };
+
+#box{
+    display:flex;
+    border:black;
+}
