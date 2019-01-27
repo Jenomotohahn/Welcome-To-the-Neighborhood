@@ -29,6 +29,8 @@ wWWidth = werewolfHouse.width * 0.4;
 
 let road = new Image();
 road.src = "assets/img/road.png";
+let imgCat = new Image();
+imgCat.src = "assets/img/cat2.png";
 
 let witchX = 400;
 let witchY = 500;
@@ -38,6 +40,22 @@ let werewolfX = 200;
 let werewolfY = 500;
 let playerX = 900;
 let playerY = 500;
+let bMoon = false;
+let bCanPlayWolfSound = true;
+let bCanPlayWitchSound = true;
+let bCanPlayVampSound = true;
+const objCat = {
+  x: 800,
+  y: 500,
+  img: imgCat,
+  bCanPlaySound: true
+};
+const objPlayer = {
+  x: 900,
+  y: 500,
+  img: player,
+  w: 60
+};
 
 let key = {
   UP: 38,
@@ -63,9 +81,11 @@ const drawMovedImage = (image, x, y) => {
 const step = () => {
   if (keys[key.LEFT]) {
     playerX -= 3;
+    objPlayer.x -= 3;
   }
   if (keys[key.RIGHT]) {
     playerX += 3;
+    objPlayer.x += 3;
   }
   // if(keys[key.UP]){
   //     //some code to check if the player is interacting with a neighbor.If yes:
@@ -81,7 +101,15 @@ const draw = () => {
   ctx.drawImage(witch, witchX, witchY);
   ctx.drawImage(vampire, vampireX, vampireY);
   ctx.drawImage(werewolf, werewolfX, werewolfY);
-  ctx.drawImage(player, playerX, playerY);
+  // ctx.drawImage(player, playerX, playerY);
+  ctx.drawImage(objPlayer.img, objPlayer.x, objPlayer.y);
+  if (bMoon) {
+    ctx.fillStyle = "red";
+    ctx.font = "20px Arial";
+    ctx.fillText("DevLeague", 115, 160);
+    ctx.font = "12px Arial";
+    ctx.fillText("Cohort27", 135, 180);
+  }
 };
 
 window.addEventListener("keydown", e => {
@@ -101,23 +129,53 @@ document.getElementById("test").addEventListener("click", e => {
 });
 
 function collisionDetect() {
-  if (playerX === 570) {
+  if (objPlayer.x === 570 && bCanPlayVampSound) {
+    // if (playerX === 570 && bCanPlayVampSound) {
     console.log("hello vampire");
     var audioVam = new Audio("assets/vamp.mp3");
     audioVam.loop = false;
     audioVam.play();
+    bCanPlayVampSound = false;
+    bMoon = true;
+    // speak(canvas, "You should try my garlic bread!");
+    setTimeout(function() {
+      bCanPlayVampSound = true;
+      bMoon = false;
+    }, 2000);
   }
-  if (playerX === 360) {
-    console.log("hello witch");
+  if (
+    objPlayer.x + objPlayer.w >= 400 &&
+    objPlayer.x <= 450 &&
+    bCanPlayWitchSound
+  ) {
+    // if (playerX === 360 && bCanPlayWitchSound) {
+    console.log("hello witch", objPlayer.x, objPlayer.x + objPlayer.w);
     var audioWitch = new Audio("assets/witch laugh.mp3");
     audioWitch.loop = false;
     audioWitch.play();
+    console.log("sound played and turned off");
+
+    bMoon = true;
+    bCanPlayWitchSound = false;
+    setTimeout(function() {
+      bCanPlayWitchSound = true;
+      console.log("sound back on");
+      // speak(objPlayer, "Has anyone seen my broom?");
+      bMoon = false;
+    }, 10000);
   }
-  if (playerX === 180) {
+  if (objPlayer.x === 180 && bCanPlayWolfSound) {
+    // if (playerX === 180 && bCanPlayWolfSound) {
     console.log("hello werewolf");
     var audioWolf = new Audio("assets/werewolfsound.mp3");
     audioWolf.loop = false;
     audioWolf.play();
+    bMoon = true;
+    bCanPlayWolfSound = false;
+    setTimeout(function() {
+      bCanPlayWolfSound = true;
+      bMoon = false;
+    }, 2000);
   }
 }
 

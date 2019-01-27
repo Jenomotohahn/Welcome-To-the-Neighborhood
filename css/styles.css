@@ -63,3 +63,24 @@ canvas {
 .choices {
   margin-left: 33%;
 }
+.choices:hover {
+  /* border: 1px solid yellow; */
+  color: lightblue;
+}
+
+label {
+  margin-left: 5px;
+  font-size: 30px;
+}
+label > br {
+  margin-left: 25px;
+}
+.chosen {
+  background-color: blue;
+}
+.overMoon {
+  position: relative;
+  top: 425px;
+  left: 130px;
+  color: red;
+}

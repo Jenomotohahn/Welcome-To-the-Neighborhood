@@ -77,7 +77,7 @@ const arrQuestions_Geography = [
     ]
   },
   {
-    question: "Which is the capital of Oregon",
+    question: "Which is the capital of Oregon?",
     name: "geo4",
     type: "multiple choice",
     correctId: "b",
@@ -101,7 +101,7 @@ const arrQuestions_Geography = [
     ]
   },
   {
-    question: "What is the capital of New Jersey",
+    question: "What is the capital of New Jersey?",
     name: "geo5",
     type: "multiple choice",
     correctId: "b",

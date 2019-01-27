@@ -5,7 +5,7 @@ const arrQuestions_GIT = [
     category: "GIT"
   },
   {
-    question: "I need to create a new 'dev' branch",
+    question: "I need to create a new 'dev' branch.",
     name: "git1",
     type: "multiple choice",
     correctId: "d",
@@ -36,11 +36,11 @@ const arrQuestions_GIT = [
     arrChoices: [
       {
         id: "a",
-        answer: "git add .\n git commit -m"
+        answer: "git add .<br> git commit -m"
       },
       {
         id: "b",
-        answer: "git init\n git save"
+        answer: "git init<br> git save"
       },
       {
         id: "c",
@@ -48,7 +48,7 @@ const arrQuestions_GIT = [
       },
       {
         id: "d",
-        answer: "git save\n git commit -m"
+        answer: "git save<br> git commit -m"
       }
     ]
   },
