@@ -58,49 +58,55 @@ const objPlayer = {
 };
 
 let key = {
-  UP: 38,
-  DOWN: 40,
-  LEFT: 37,
-  RIGHT: 39
+    UP: 38,
+    DOWN: 40,
+    LEFT: 37,
+    RIGHT: 39,
+    SPACE: 32
 };
 
 let keys = {
-  38: false,
-  40: false,
-  37: false,
-  39: false
+    38: false,
+    40: false,
+    37: false,
+    39: false,
+    32: false
 };
 
 const drawMovedImage = (image, x, y) => {
-  ctx.save();
-  ctx.translate(x, y);
-  ctx.drawImage(image, x, y);
-  ctx.restore();
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.drawImage(image, x, y);
+    ctx.restore();
 };
 
-const step = () => {
-  if (keys[key.LEFT]) {
-    playerX -= 3;
-    objPlayer.x -= 3;
-  }
-  if (keys[key.RIGHT]) {
-    playerX += 3;
-    objPlayer.x += 3;
-  }
-  // if(keys[key.UP]){
-  //     //some code to check if the player is interacting with a neighbor.If yes:
-  //     //text box to come up and with selectable multiple choice.
-  // };
+const step = () => { 
+    if (keys[key.LEFT]) {
+        objPlayer.x -= 3;
+    };
+    if (keys[key.RIGHT]) {
+        objPlayer.x += 3;
+    };
+    if (keys[key.SPACE]) {
+        objPlayer.y -= 3;
+    };
+    if (keys[key.DOWN]) {
+        objPlayer.y += 3;
+    }
+    // if(keys[key.UP]){
+    //     //some code to check if the player is interacting with a neighbor.If yes:
+    //     //text box to come up and with selectable multiple choice. 
+    // };
 };
 
 const draw = () => {
-  ctx.clearRect(0, 0, ctxW, ctxH);
-  ctx.drawImage(road, 0, 0);
-  ctx.drawImage(witchHouse, 90, 250, wHWidth, wHHeight);
-  ctx.drawImage(werewolfHouse, -30, 360, wWWidth, wWHeight);
-  ctx.drawImage(witch, witchX, witchY);
-  ctx.drawImage(vampire, vampireX, vampireY);
-  ctx.drawImage(werewolf, werewolfX, werewolfY);
+    ctx.clearRect(0, 0, ctxW, ctxH);
+    ctx.drawImage(road, 0, 0);
+    ctx.drawImage(witchHouse, 90, 250, wHWidth, wHHeight);
+    ctx.drawImage(werewolfHouse, -30, 360, wWWidth, wWHeight);
+    ctx.drawImage(witch, witchX, witchY);
+    ctx.drawImage(vampire, vampireX, vampireY);
+    ctx.drawImage(werewolf, werewolfX, werewolfY);
   // ctx.drawImage(player, playerX, playerY);
   ctx.drawImage(objPlayer.img, objPlayer.x, objPlayer.y);
   if (bMoon) {
@@ -112,20 +118,16 @@ const draw = () => {
   }
 };
 
-window.addEventListener("keydown", e => {
-  if (keys[e.keyCode] !== "undefined") {
-    keys[e.keyCode] = true;
-  }
+window.addEventListener('keydown', e => {
+    if (keys[e.keyCode] !== 'undefined') {
+        keys[e.keyCode] = true;
+    };
 });
 
-window.addEventListener("keyup", e => {
-  if (keys[e.keyCode] !== "undefined") {
-    keys[e.keyCode] = false;
-  }
-});
-
-document.getElementById("test").addEventListener("click", e => {
-  qs.loadQuestion(e);
+window.addEventListener('keyup', e => {
+    if (keys[e.keyCode] !== 'undefined') {
+        keys[e.keyCode] = false;
+    };
 });
 
 function collisionDetect() {
@@ -180,17 +182,17 @@ function collisionDetect() {
 }
 
 const frame = () => {
-  draw();
-  step();
-  collisionDetect();
-  window.requestAnimationFrame(frame);
+    draw();
+    step();
+    collisionDetect();
+    window.requestAnimationFrame(frame);
 };
 
 frame();
 
-window.onload = function() {
-  if (!window.location.hash) {
-    window.location = window.location + "#loaded";
-    window.location.reload();
-  }
-};
+window.onload = function () {
+    if (!window.location.hash) {
+        window.location = window.location + '#loaded';
+        window.location.reload();
+    };
+}
